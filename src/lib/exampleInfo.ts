@@ -22,58 +22,6 @@ export const exampleMemberTim: Member = {
     color: 'green'
 }
 
-export const exampleList1 = {
-    id: 'list-1',
-    title: 'To Do',
-    cards: [
-        {
-            id: 'card-1',
-            title: 'Design Homepage',
-            description: 'Create the homepage for the project.',
-            labels: [
-                { title: 'Design', color: 'green' },
-                { title: 'High Priority', color: 'red' }
-            ],
-            checklistItems: [
-                {
-                    id: 'check-1',
-                    title: 'Create wireframes',
-                    completed: false,
-                    members: [exampleMemberAlice],
-                    dueDate: '2024-10-10'
-                },
-                {
-                    id: 'check-2',
-                    title: 'Get approval from team',
-                    completed: false,
-                    members: [exampleMemberBob],
-                    dueDate: '2024-10-12'
-                }
-            ],
-            dueDate: '2024-10-15',
-            members: [
-                exampleMemberAlice
-            ],
-            watchers: [
-                exampleMemberBob
-            ],
-            activities: [
-                {
-                    id: 'activity-1',
-                    title: 'Alice commented',
-                    member: exampleMemberAlice,
-                    date: '2024-10-01',
-                    reactions: [
-                        {
-                            id: 'reaction-1', emoji: '👍', member: exampleMemberBob
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
-
 export const exampleBoard: Board = {
     id: 'board-1',
     title: 'Project Board',
@@ -96,32 +44,36 @@ export const exampleBoard: Board = {
                         { title: 'Design', color: 'green' },
                         { title: 'High Priority', color: 'red' }
                     ],
-                    checklistItems: [
-                        {
-                            id: 'check-1',
-                            title: 'Create wireframes',
-                            completed: false,
-                            members: [{
-                                id: 'member-1',
-                                firstName: 'Alice',
-                                lastName: 'Smith',
-                                color: 'blue'
-                            }],
-                            dueDate: '2024-10-10'
-                        },
-                        {
-                            id: 'check-2',
-                            title: 'Get approval from team',
-                            completed: false,
-                            members: [{
-                                id: 'member-2',
-                                firstName: 'Bob',
-                                lastName: 'Doe',
-                                color: 'red'
-                            }],
-                            dueDate: '2024-10-12'
-                        }
-                    ],
+                    checklist: {
+                        id: 'checklist-1',
+                        title: 'Design Tasks',
+                        checklistItems: [
+                            {
+                                id: 'check-1',
+                                title: 'Create wireframes',
+                                completed: false,
+                                members: [{
+                                    id: 'member-1',
+                                    firstName: 'Alice',
+                                    lastName: 'Smith',
+                                    color: 'blue'
+                                }],
+                                dueDate: '2024-10-10'
+                            },
+                            {
+                                id: 'check-2',
+                                title: 'Get approval from team',
+                                completed: false,
+                                members: [{
+                                    id: 'member-2',
+                                    firstName: 'Bob',
+                                    lastName: 'Doe',
+                                    color: 'red'
+                                }],
+                                dueDate: '2024-10-12'
+                            }
+                        ],
+                    },
                     dueDate: '2024-10-15',
                     members: [
                         {
@@ -176,20 +128,24 @@ export const exampleBoard: Board = {
                     labels: [
                         { title: 'Backend', color: 'blue' }
                     ],
-                    checklistItems: [
-                        {
-                            id: 'check-3',
-                            title: 'Set up OAuth with Google',
-                            completed: true,
-                            members: [{
-                                id: 'member-2',
-                                firstName: 'Bob',
-                                lastName: 'Doe',
-                                color: 'red'
-                            }],
-                            dueDate: '2024-10-05'
-                        }
-                    ],
+                    checklist: {
+                        id: 'checklist-2',
+                        title: 'Development Tasks',
+                        checklistItems: [
+                            {
+                                id: 'check-3',
+                                title: 'Set up OAuth with Google',
+                                completed: true,
+                                members: [{
+                                    id: 'member-2',
+                                    firstName: 'Bob',
+                                    lastName: 'Doe',
+                                    color: 'red'
+                                }],
+                                dueDate: '2024-10-05'
+                            }
+                        ],
+                    },
                     dueDate: '2024-10-20',
                     members: [
                         {
@@ -235,7 +191,7 @@ export const exampleBoard: Board = {
                     labels: [
                         { title: 'Setup', color: 'yellow' }
                     ],
-                    checklistItems: [],
+                    checklist: null,
                     dueDate: '2024-09-30',
                     members: [
                         {

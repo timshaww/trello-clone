@@ -25,11 +25,17 @@ export type Card = {
     title: string
     description: string
     labels: Label[]
-    checklistItems: ChecklistItem[]
+    checklist: Checklist | null
     dueDate: string
     members: Member[]
     watchers: Member[]
     activities: Activity[]
+}
+
+export type Checklist = {
+    id: string
+    title: string
+    checklistItems: ChecklistItem[]
 }
 
 export type Member = {

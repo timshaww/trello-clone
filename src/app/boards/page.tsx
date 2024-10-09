@@ -3,7 +3,6 @@
 import Sidebar from '../_components/Sidebar';
 import Board from '../_components/Board';
 import Menu from '../_components/Menu';
-import BoardHeader from '../_components/BoardHeader';
 import NavBar from '../_components/NavBar';
 import { exampleBoard } from '@/lib/exampleInfo';
 import { useState } from 'react';
