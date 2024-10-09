@@ -23,32 +23,20 @@ const List: React.FC<ListProps> = ({ list, setList }) => {
 				</div>
 			</div>
 
-			<Droppable droppableId={list.id} type='card'>
-				{(provided) => (
-					<div className='flex flex-col gap-2' {...provided.droppableProps} ref={provided.innerRef}>
-						{cards.map((card, cardIndex) => (
-							<Draggable key={card.id} draggableId={`${card.id}-${card.title}`} index={cardIndex}>
-								{(provided) => (
-									<div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
-										<Card
-											key={card.id}
-											card={card}
-											setCard={(updatedCard: React.SetStateAction<CardType>) => {
-												const newCards = [...cards];
-												const updatedCards =
-													typeof updatedCard === 'function' ? updatedCard(newCards[cardIndex]) : updatedCard;
-												newCards[cardIndex] = updatedCards;
-												setCards(newCards);
-											}}
-										/>
-									</div>
-								)}
-							</Draggable>
-						))}
-						{provided.placeholder}
-					</div>
-				)}
-			</Droppable>
+			<div className='flex flex-col gap-2'>
+				{cards.map((card, cardIndex) => (
+					<Card
+						key={card.id}
+						card={card}
+						setCard={(updatedCard: React.SetStateAction<CardType>) => {
+							const newCards = [...cards];
+							const updatedCards = typeof updatedCard === 'function' ? updatedCard(newCards[cardIndex]) : updatedCard;
+							newCards[cardIndex] = updatedCards;
+							setCards(newCards);
+						}}
+					/>
+				))}
+			</div>
 
 			<button className='flex flex-row w-full h-8 items-center rounded hover:bg-trello-hover'>
 				<Plus className='text-trello-list-text size-4 mx-2' />
