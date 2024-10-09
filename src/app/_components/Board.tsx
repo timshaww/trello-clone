@@ -19,21 +19,15 @@ const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 			<BoardHeader board={board} setBoard={setBoard} />
 			<div className='flex flex-row p-3 gap-3'>
 				{lists.map((list: ListType, listIndex: number) => (
-					<Draggable key={list.id} draggableId={list.id} index={listIndex}>
-						{(provided) => (
-							<div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-								<List
-									list={list}
-									setList={(updatedList: React.SetStateAction<ListType>) => {
-										const newLists = [...lists];
-										const newList = typeof updatedList === 'function' ? updatedList(newLists[listIndex]) : updatedList;
-										newLists[listIndex] = newList;
-										setLists(newLists);
-									}}
-								/>
-							</div>
-						)}
-					</Draggable>
+					<List
+						list={list}
+						setList={(updatedList: React.SetStateAction<ListType>) => {
+							const newLists = [...lists];
+							const newList = typeof updatedList === 'function' ? updatedList(newLists[listIndex]) : updatedList;
+							newLists[listIndex] = newList;
+							setLists(newLists);
+						}}
+					/>
 				))}
 			</div>
 		</div>
