@@ -41,8 +41,8 @@ export const exampleBoard: Board = {
                     title: 'Design Homepage',
                     description: 'Create the homepage for the project.',
                     labels: [
-                        { title: 'Design', color: 'green' },
-                        { title: 'High Priority', color: 'red' }
+                        { title: 'Design', color: 'green', id: 'label-1' },
+                        { title: 'High Priority', color: 'red', id: 'label-2' }
                     ],
                     checklist: {
                         id: 'checklist-1',
@@ -58,7 +58,7 @@ export const exampleBoard: Board = {
                                     lastName: 'Smith',
                                     color: 'blue'
                                 }],
-                                dueDate: '2024-10-10'
+                                dueDate: new Date('2024-10-10')
                             },
                             {
                                 id: 'check-2',
@@ -70,11 +70,11 @@ export const exampleBoard: Board = {
                                     lastName: 'Doe',
                                     color: 'red'
                                 }],
-                                dueDate: '2024-10-12'
+                                dueDate: new Date('2024-10-12')
                             }
                         ],
                     },
-                    dueDate: '2024-10-15',
+                    dueDate: new Date('2024-10-15'),
                     members: [
                         {
                             id: 'member-1',
@@ -101,7 +101,7 @@ export const exampleBoard: Board = {
                                 lastName: 'Smith',
                                 color: 'blue'
                             },
-                            date: '2024-10-01',
+                            date: new Date('2024-10-01'),
                             reactions: [
                                 {
                                     id: 'reaction-1', emoji: '👍', member: {
@@ -126,7 +126,7 @@ export const exampleBoard: Board = {
                     title: 'Develop Authentication',
                     description: 'Implement OAuth and session management for the app.',
                     labels: [
-                        { title: 'Backend', color: 'blue' }
+                        { title: 'Backend', color: 'blue', id: 'label-4' }
                     ],
                     checklist: {
                         id: 'checklist-2',
@@ -142,11 +142,11 @@ export const exampleBoard: Board = {
                                     lastName: 'Doe',
                                     color: 'red'
                                 }],
-                                dueDate: '2024-10-05'
+                                dueDate: new Date('2024-10-05')
                             }
                         ],
                     },
-                    dueDate: '2024-10-20',
+                    dueDate: new Date('2024-10-20'),
                     members: [
                         {
                             id: 'member-2',
@@ -173,7 +173,7 @@ export const exampleBoard: Board = {
                                 lastName: 'Doe',
                                 color: 'red'
                             },
-                            date: '2024-10-02',
+                            date: new Date('2024-10-02'),
                             reactions: []
                         }
                     ]
@@ -189,10 +189,10 @@ export const exampleBoard: Board = {
                     title: 'Set up Project Repo',
                     description: 'Initialize the project repository and push to GitHub.',
                     labels: [
-                        { title: 'Setup', color: 'yellow' }
+                        { title: 'Setup', color: 'yellow', id: 'label-3' }
                     ],
                     checklist: null,
-                    dueDate: '2024-09-30',
+                    dueDate: new Date('2024-09-30'),
                     members: [
                         {
                             id: 'member-1',
@@ -207,7 +207,7 @@ export const exampleBoard: Board = {
                             color: 'red'
                         }
                     ],
-                    watchers: [],
+                    watchers: [exampleMemberTim],
                     activities: [
                         {
                             id: 'activity-3',
@@ -218,7 +218,7 @@ export const exampleBoard: Board = {
                                 lastName: 'Smith',
                                 color: 'blue'
                             },
-                            date: '2024-09-29',
+                            date: new Date('2024-09-29'),
                             reactions: [
                                 {
                                     id: 'reaction-2', emoji: '🎉', member: {

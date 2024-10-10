@@ -26,7 +26,7 @@ export type Card = {
     description: string
     labels: Label[]
     checklist: Checklist | null
-    dueDate: string
+    dueDate: Date
     members: Member[]
     watchers: Member[]
     activities: Activity[]
@@ -46,7 +46,8 @@ export type Member = {
 }
 
 export type Label = {
-    title: string
+    id: string
+    title?: string
     color: 'green' | 'yellow' | 'orange' | 'red' | 'purple' | 'blue' | 'sky' | 'lime' | 'pink' | 'black'
 }
 
@@ -55,14 +56,14 @@ export type ChecklistItem = {
     title: string
     completed: boolean
     members: Member[]
-    dueDate: string
+    dueDate: Date
 }
 
 export type Activity = {
     id: string
     title: string
     member: Member
-    date: string
+    date: Date
     reactions: Reaction[]
 }
 

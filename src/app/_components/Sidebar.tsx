@@ -7,8 +7,6 @@ const Sidebar = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 	const [isAddBoardOpen, setIsAddBoardOpen] = useState<boolean>(false);
 
-	const boards: Board[] = []; // TODO: Fetch boards from API
-
 	return (
 		<div className={`flex flex-col h-full ${isSidebarOpen ? 'w-[260px]' : 'w-[16px]'} bg-trello-bg `}>
 			{isSidebarOpen ? (

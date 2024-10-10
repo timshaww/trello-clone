@@ -24,6 +24,7 @@ const config: Config = {
 			colors: {
 				trello: {
 					bg: '#1d2125',
+					idk: "#525864",
 					hover: '#282f27',
 					focus: '#99c8ff',
 					border: '#434e61',
