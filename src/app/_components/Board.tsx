@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { Board as BoardType, List as ListType } from '../../lib/utils'; // Assume the types are imported
-import List from './List';
+import { Board as BoardType, List as ListType } from '../../lib/utils';
 import BoardHeader from './BoardHeader';
+import List from './List';
 
 type BoardProps = {
 	board: BoardType;

@@ -28,7 +28,6 @@ const AddLabel = ({ children, card, setCard }: AddLabelProps) => {
 		{ color: 'bg-trello-labels-black', label: 'black' },
 	];
 
-	// Function to handle the save operation when the "Add label" button is clicked
 	const handleSaveLabel = () => {
 		if (selectedLabel) {
 			setCard((prev) => {
@@ -36,7 +35,7 @@ const AddLabel = ({ children, card, setCard }: AddLabelProps) => {
 				return {
 					...prev,
 					labels: isLabelSelected
-						? prev.labels // If label is already selected, do nothing
+						? prev.labels
 						: [
 								...prev.labels,
 								{
@@ -44,10 +43,10 @@ const AddLabel = ({ children, card, setCard }: AddLabelProps) => {
 									id: Math.random().toString(),
 									title,
 								},
-						  ], // Otherwise, add the selected label
+						  ],
 				};
 			});
-			setSelectedLabel('black'); // Optionally clear the selection after saving
+			setSelectedLabel('black');
 		}
 	};
 
@@ -85,10 +84,7 @@ const AddLabel = ({ children, card, setCard }: AddLabelProps) => {
 							</div>
 						))}
 					</div>
-					<button
-						onClick={handleSaveLabel} // Trigger the save action when clicked
-						className='px-3 rounded mt-2 py-1.5 bg-trello-accent text-trello-text-h font-semibold'
-					>
+					<button onClick={handleSaveLabel} className='px-3 rounded mt-2 py-1.5 bg-trello-accent text-trello-text-h font-semibold'>
 						Add label
 					</button>
 				</div>

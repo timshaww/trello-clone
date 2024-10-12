@@ -7,7 +7,6 @@ interface AvatarProps {
 	className?: string;
 	borderClassName: string;
 	popover: boolean;
-	// Add a prop to handle member removal from the card
 	onRemoveMember: (memberId: string) => void;
 }
 
@@ -23,7 +22,7 @@ const Avatar = ({ members, className, borderClassName, popover, onRemoveMember }
 								`bg-trello-labels-${member.color} border-2 rounded-full size-8 flex items-center justify-center`,
 								className,
 								borderClassName,
-								index > 0 ? '-ml-3' : '' // Overlap avatars using negative margin
+								index > 0 ? '-ml-3' : ''
 							)}
 						>
 							<div className='hover:bg-[rgba(0,0,0,0.5)] rounded-full size-[28px] flex items-center justify-center'>
@@ -42,7 +41,6 @@ const Avatar = ({ members, className, borderClassName, popover, onRemoveMember }
 								</h3>
 							</div>
 							<div className='p-3'>
-								{/* Remove Member from card */}
 								<button
 									className='hover:bg-trello-hover w-full mt-3 rounded text-trello-text-p text-left px-2'
 									onClick={() => onRemoveMember(member.id)}

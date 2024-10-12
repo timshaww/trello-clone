@@ -1,11 +1,10 @@
 'use client';
 
-import Sidebar from '../_components/Sidebar';
-import Board from '../_components/Board';
-import Menu from '../_components/Menu';
-import NavBar from '../_components/NavBar';
 import { exampleBoard } from '@/lib/exampleInfo';
 import { useState } from 'react';
+import Board from '../_components/Board';
+import Menu from '../_components/Menu';
+import Sidebar from '../_components/Sidebar';
 import { MainProvider } from '../_contexts/MainContext';
 
 const page = () => {

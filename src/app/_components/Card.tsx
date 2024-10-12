@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Activity, Card as CardType, Checklist, ChecklistItem, Label, Member } from '../../lib/utils';
 import { Clock, Eye, MessageCircle, Pencil, SquareCheckBig } from 'lucide-react';
+import React from 'react';
+import { Card as CardType } from '../../lib/utils';
 import Avatar from './Avatar';
-import { exampleMemberTim } from '@/lib/exampleInfo';
 import EditCard from './EditCard';
 
 interface CardProps {

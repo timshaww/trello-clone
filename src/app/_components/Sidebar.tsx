@@ -1,7 +1,6 @@
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { ChevronLeft, Plus } from 'lucide-react';
 import { useState } from 'react';
 import AddBoard from './AddBoard';
-import { Board } from '@/lib/utils';
 
 const Sidebar = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);

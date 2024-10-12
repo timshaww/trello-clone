@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
 import { Ellipsis, Plus } from 'lucide-react';
-import Card from './Card';
+import React, { useEffect } from 'react';
 import { Card as CardType, List as ListType } from '../../lib/utils';
+import Card from './Card';
 import EditCard from './EditCard';
 
 interface ListProps {
@@ -12,7 +12,6 @@ interface ListProps {
 const List: React.FC<ListProps> = ({ list, setList }) => {
 	const [cards, setCards] = React.useState(list.cards);
 
-	// Initialize the new card template
 	const newCardInit: CardType = {
 		id: 'new',
 		title: '',
@@ -27,23 +26,20 @@ const List: React.FC<ListProps> = ({ list, setList }) => {
 
 	const [newCard, setNewCard] = React.useState(newCardInit);
 
-	// Sync the local card state with the list whenever the cards are updated
 	useEffect(() => {
 		setList((prevList) => ({ ...prevList, cards }));
 	}, [cards]);
 
-	// Function to add a new card to the list
 	const handleAddCard = () => {
 		if (newCard.title.trim() !== '') {
-			const newCardWithId = { ...newCard, id: Date.now().toString() }; // Assign a unique id based on timestamp
-			setCards((prevCards) => [...prevCards, newCardWithId]); // Add the new card to the existing list of cards
-			setNewCard(newCardInit); // Reset the newCard state after adding
+			const newCardWithId = { ...newCard, id: Date.now().toString() };
+			setCards((prevCards) => [...prevCards, newCardWithId]);
+			setNewCard(newCardInit);
 		}
 	};
 
-	// Function to remove a card by id
 	const handleRemoveCard = (cardId: string) => {
-		setCards((prevCards) => prevCards.filter((card) => card.id !== cardId)); // Filter out the card by id
+		setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
 	};
 
 	return (
@@ -60,10 +56,10 @@ const List: React.FC<ListProps> = ({ list, setList }) => {
 				{cards.map((card, cardIndex) => (
 					<div key={card.id}>
 						<Card
-							onSave={handleAddCard} // Pass onSave to the card component
+							onSave={handleAddCard}
 							key={cardIndex}
 							card={card}
-							onRemove={() => handleRemoveCard(card.id)} // Pass handleRemoveCard to each card
+							onRemove={() => handleRemoveCard(card.id)}
 							setCard={(updatedCard: React.SetStateAction<CardType>) => {
 								const newCards = [...cards];
 								const updatedCards = typeof updatedCard === 'function' ? updatedCard(newCards[cardIndex]) : updatedCard;
@@ -77,13 +73,7 @@ const List: React.FC<ListProps> = ({ list, setList }) => {
 			</div>
 
 			{/* Add Card Section */}
-			<EditCard
-				onRemove={() => handleRemoveCard(newCard.id)} // Remove the new card when canceling
-				card={newCard}
-				listTitle={list.title}
-				setCard={setNewCard}
-				onSave={handleAddCard} // Add the card when saving
-			>
+			<EditCard onRemove={() => handleRemoveCard(newCard.id)} card={newCard} listTitle={list.title} setCard={setNewCard} onSave={handleAddCard}>
 				<button className='flex flex-row w-full h-8 items-center rounded hover:bg-trello-hover'>
 					<Plus className='text-trello-list-text size-4 mx-2' />
 					<h3 className='text-trello-list-text text-sm font-semibold'>Add Card</h3>

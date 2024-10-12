@@ -2,8 +2,8 @@ import { Card } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { Plus, X } from 'lucide-react';
 import React, { useState } from 'react';
-import Avatar from './Avatar';
 import { useMainContext } from '../_contexts/MainContext';
+import Avatar from './Avatar';
 
 interface AddMemberProps {
 	card: Card;
@@ -15,12 +15,10 @@ const AddMember = ({ card, setCard, children }: AddMemberProps) => {
 	const [search, setSearch] = useState<string>('');
 	const { board } = useMainContext();
 
-	// Function to handle adding/removing a member to/from the card
 	const handleToggleMember = (memberId: string) => {
 		setCard((prevCard) => {
 			const isMemberAdded = prevCard.members.some((m) => m.id === memberId);
 
-			// If member is already on the card, remove them; otherwise, add them
 			return {
 				...prevCard,
 				members: isMemberAdded
@@ -37,7 +35,6 @@ const AddMember = ({ card, setCard, children }: AddMemberProps) => {
 		}));
 	};
 
-	// Filter members based on search input
 	const filteredMembers = board.members.filter(
 		(member) => member.firstName.toLowerCase().includes(search.toLowerCase()) || member.lastName.toLowerCase().includes(search.toLowerCase())
 	);
@@ -88,9 +85,7 @@ const AddMember = ({ card, setCard, children }: AddMemberProps) => {
 										<p className='text-trello-text-p font-semibold'>
 											{member.firstName} {member.lastName}
 										</p>
-										{isMemberAdded && (
-											<X className='text-trello-text-p size-4' /> // Show an X if member is already added to indicate removal
-										)}
+										{isMemberAdded && <X className='text-trello-text-p size-4' />}
 									</div>
 								</div>
 							);
