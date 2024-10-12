@@ -2,32 +2,15 @@
 
 import { Card, ChecklistItem, Member } from '@/lib/utils';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/ui/dialog';
-import {
-	Archive,
-	Calendar,
-	Captions,
-	Check,
-	Clock,
-	Eye,
-	List,
-	Plus,
-	SquareCheckBig,
-	Tags,
-	Text,
-	UserRound,
-	UserRoundMinus,
-	UserRoundPlus,
-	X,
-} from 'lucide-react';
+import { Archive, Captions, Check, Eye, List, Plus, SquareCheckBig, Tags, Text, UserRound, UserRoundMinus, UserRoundPlus, X } from 'lucide-react';
 import React, { ReactNode, useState } from 'react';
-import Avatar from './Avatar';
-import AddMember from './AddMember';
 import { useMainContext } from '../_contexts/MainContext';
-import EditDueDate from './EditDueDate';
-import Checklist from './Checklist';
 import Activity from './Activity';
-import AddChecklist from './AddChecklist';
 import AddLabel from './AddLabel';
+import AddMember from './AddMember';
+import Avatar from './Avatar';
+import Checklist from './Checklist';
+import EditDueDate from './EditDueDate';
 
 interface EditCardProps {
 	card: Card;
