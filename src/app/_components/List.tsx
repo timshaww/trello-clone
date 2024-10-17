@@ -9,6 +9,8 @@ interface ListProps {
 	setList: React.Dispatch<React.SetStateAction<ListType>>;
 }
 
+const test = 'test';
+
 const List: React.FC<ListProps> = ({ list, setList }) => {
 	const [cards, setCards] = useState(list.cards);
 
