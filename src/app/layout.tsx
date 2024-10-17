@@ -1,8 +1,7 @@
 'use client';
 
-import type { Metadata } from 'next';
-import './globals.css';
 import { MainProvider } from './_contexts/MainContext';
+import './globals.css';
 
 export default function RootLayout({
 	children,

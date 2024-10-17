@@ -1,12 +1,12 @@
 'use client';
 
 import { exampleBoard } from '@/lib/exampleInfo';
-import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation'; // Updated import
+import { useEffect, useState } from 'react';
 import Board from '../../_components/Board';
 import Menu from '../../_components/Menu';
 import Sidebar from '../../_components/Sidebar';
-import { MainProvider, useMainContext } from '../../_contexts/MainContext';
-import { useParams } from 'next/navigation'; // Updated import
+import { useMainContext } from '../../_contexts/MainContext';
 
 const Page = () => {
 	const { boardId } = useParams<{ boardId: string }>(); // Use useParams to get boardId
@@ -17,14 +17,14 @@ const Page = () => {
 		if (boardId) {
 			setBoard(getBoardById(boardId)!);
 		}
-	}, [boardId, getBoardById]);
+	}, [boardId, getBoardById, setBoard]);
 
 	useEffect(() => {
 		if (board) {
 			const updatedBoards = boards.map((b) => (b.id === board.id ? board : b));
 			setBoards(updatedBoards);
 		}
-	}, [board]);
+	}, [board, setBoards, boards]);
 
 	return (
 		<>

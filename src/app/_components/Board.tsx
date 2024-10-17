@@ -24,11 +24,13 @@ const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 		);
 	}
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const [lists, setLists] = useState<ListType[]>(board.lists || []);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		setBoard((prevBoard) => ({ ...prevBoard, lists }));
-	}, [lists]);
+	}, [lists, setBoard]);
 
 	// Add a new list
 	const handleAddList = () => {

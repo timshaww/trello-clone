@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Board } from '@/lib/utils';
-import { Ellipsis, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 interface BoardHeaderProps {
 	board: Board;

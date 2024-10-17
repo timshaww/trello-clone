@@ -1,6 +1,6 @@
 import { exampleBoard, exampleMemberTim } from '@/lib/exampleInfo';
 import { Board, Member } from '@/lib/utils';
-import { createContext, FC, ReactNode, useContext, useState, useEffect, useRef } from 'react';
+import { createContext, FC, ReactNode, useContext, useState, useRef } from 'react';
 
 interface MainContextProps {
 	currentMember: Member | undefined;
@@ -13,7 +13,6 @@ interface MainContextProps {
 const MainContext = createContext<MainContextProps | undefined>(undefined);
 
 export const MainProvider: FC<{ children: ReactNode }> = ({ children }) => {
-	// Load initial state from localStorage or fallback to example data
 	const [currentMember, setCurrentMember] = useState<Member>(
 		exampleMemberTim
 		// () => {
@@ -32,11 +31,9 @@ export const MainProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
 	const getBoardById = (boardId: string) => boards.find((board) => board.id === boardId);
 
-	// Store previous values in useRef to avoid unnecessary updates
-	const previousMember = useRef(currentMember);
-	const previousBoards = useRef(boards);
+	// const previousMember = useRef(currentMember);
+	// const previousBoards = useRef(boards);
 
-	// Save currentMember to localStorage when it changes, only if it's different from the previous value
 	// useEffect(() => {
 	// 	if (currentMember !== previousMember.current) {
 	// 		localStorage.setItem('currentMember', JSON.stringify(currentMember));
@@ -44,7 +41,6 @@ export const MainProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	// 	}
 	// }, [currentMember]);
 
-	// // Save boards to localStorage when they change, only if they're different from the previous value
 	// useEffect(() => {
 	// 	if (boards !== previousBoards.current) {
 	// 		localStorage.setItem('boards', JSON.stringify(boards));

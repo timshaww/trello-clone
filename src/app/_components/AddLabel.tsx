@@ -11,7 +11,7 @@ interface AddLabelProps {
 
 type LabelColor = 'green' | 'yellow' | 'orange' | 'red' | 'purple' | 'blue' | 'sky' | 'lime' | 'pink' | 'black';
 
-const AddLabel = ({ children, card, setCard }: AddLabelProps) => {
+const AddLabel = ({ children, setCard }: AddLabelProps) => {
 	const [title, setTitle] = React.useState<string>('');
 	const [selectedLabel, setSelectedLabel] = React.useState<LabelColor>('black');
 
