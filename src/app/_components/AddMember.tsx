@@ -1,9 +1,10 @@
-import { Card } from '@/lib/utils';
+import { Board, Card } from '@/lib/utils';
 import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import { Plus, X } from 'lucide-react';
 import React, { useState } from 'react';
 import { useMainContext } from '../_contexts/MainContext';
 import Avatar from './Avatar';
+import { useParams } from 'next/navigation';
 
 interface AddMemberProps {
 	card: Card;
@@ -12,8 +13,10 @@ interface AddMemberProps {
 }
 
 const AddMember = ({ card, setCard, children }: AddMemberProps) => {
+	const { boardId } = useParams();
+	const { getBoardById } = useMainContext();
 	const [search, setSearch] = useState<string>('');
-	const { board } = useMainContext();
+	const board: Board = getBoardById(boardId! as string)!;
 
 	const handleToggleMember = (memberId: string) => {
 		setCard((prevCard) => {

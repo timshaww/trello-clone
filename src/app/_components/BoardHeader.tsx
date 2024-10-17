@@ -21,6 +21,10 @@ const BoardHeader = ({ board, setBoard }: BoardHeaderProps) => {
 		}
 	}, [title]);
 
+	useEffect(() => {
+		setBoard((prevBoard) => ({ ...prevBoard, title, star }));
+	}, [star, title]);
+
 	return (
 		<div className='h-14 w-full p-2 flex flex-row justify-between items-center bg-[rgba(0,0,0,0.20)]'>
 			<div className='flex flex-row gap-2 items-center text-trello-text-h'>
@@ -40,14 +44,14 @@ const BoardHeader = ({ board, setBoard }: BoardHeaderProps) => {
 					<Star className='size-4 text-trello-text-h' fill={star ? 'white' : 'none'} />
 				</div>
 			</div>
-			<div className='flex flex-row gap-2'>
+			{/* <div className='flex flex-row gap-2'>
 				<div className='flex items-center justify-center hover:bg-[#525864] rounded size-8' onClick={() => setStar(!star)}>
 					<ListFilter className='size-4 text-trello-text-h' />
 				</div>
 				<div className='flex items-center justify-center hover:bg-[#525864] rounded size-8' onClick={() => setStar(!star)}>
 					<Ellipsis className='size-4 text-trello-text-h' />
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
