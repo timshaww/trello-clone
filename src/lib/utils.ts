@@ -26,7 +26,7 @@ export type Card = {
     description: string
     labels: Label[]
     checklist: Checklist | null
-    dueDate: Date
+    dueDate: Date | undefined
     members: Member[]
     watchers: Member[]
     activities: Activity[]

@@ -34,7 +34,7 @@ const BoardCard = ({ board }: BoardCardProps) => {
 	};
 
 	return (
-		<a className='flex flex-row justify-between h-8 w-full group hover:bg-trello-hover px-2 items-center' href={`/boards/${board.id}`}>
+		<a className='flex flex-row justify-between h-8 w-full group hover:bg-trello-hover px-2 items-center' href={`/b/${board.id}`}>
 			<div className='flex flex-row gap-2'>
 				<div
 					className={`h-5 w-8 rounded-sm bg-gradient-to-tl to-trello-backgrounds-${board.background}-to from-trello-backgrounds-${board.background}-from`}
