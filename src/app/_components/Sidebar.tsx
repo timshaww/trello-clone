@@ -1,13 +1,17 @@
 import { ChevronLeft, Plus } from 'lucide-react';
 import { useState } from 'react';
 import AddBoard from './AddBoard';
+import { useMainContext } from '../_contexts/MainContext';
+import BoardCard from './BoardCard';
 
 const Sidebar = () => {
-	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+	const { boards } = useMainContext();
+
+	const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 	const [isAddBoardOpen, setIsAddBoardOpen] = useState<boolean>(false);
 
 	return (
-		<div className={`flex flex-col h-full ${isSidebarOpen ? 'w-[260px]' : 'w-[16px]'} bg-trello-bg `}>
+		<div className={`flex flex-col h-full ${isSidebarOpen ? 'w-[260px] min-w-[260px]' : 'min-w-[16px] w-[16px]'} bg-trello-bg `}>
 			{isSidebarOpen ? (
 				<div className='flex flex-col h-full border-r border-trello-border'>
 					<div className='flex flex-row h-[57px] w-full justify-between border-b border-trello-border items-center px-3 py-2'>
@@ -33,6 +37,16 @@ const Sidebar = () => {
 							</div>
 						</AddBoard>
 					</div>
+					{boards
+						.filter((board) => board.star)
+						.map((board) => (
+							<BoardCard board={board} key={board.id} />
+						))}
+					{boards
+						.filter((board) => !board.star)
+						.map((board) => (
+							<BoardCard board={board} key={board.id} />
+						))}
 				</div>
 			) : (
 				<div className='hover:bg-trello-hover size-full border-r border-trello-border cursor-pointer' onClick={() => setIsSidebarOpen(true)}>

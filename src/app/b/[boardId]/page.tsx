@@ -9,18 +9,22 @@ import { MainProvider, useMainContext } from '../../_contexts/MainContext';
 import { useParams } from 'next/navigation'; // Updated import
 
 const Page = () => {
-	const { boardId } = useParams(); // Use useParams to get boardId
+	const { boardId } = useParams<{ boardId: string }>(); // Use useParams to get boardId
 	const [board, setBoard] = useState(exampleBoard);
-	const { getBoardById } = useMainContext();
+	const { getBoardById, setBoards, boards } = useMainContext();
 
 	useEffect(() => {
-		if (boardId && typeof boardId === 'string') {
-			const fetchedBoard = getBoardById(boardId);
-			if (fetchedBoard) {
-				setBoard(fetchedBoard);
-			}
+		if (boardId) {
+			setBoard(getBoardById(boardId)!);
 		}
 	}, [boardId, getBoardById]);
+
+	useEffect(() => {
+		if (board) {
+			const updatedBoards = boards.map((b) => (b.id === board.id ? board : b));
+			setBoards(updatedBoards);
+		}
+	}, [board]);
 
 	return (
 		<>

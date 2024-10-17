@@ -1,45 +1,58 @@
-import { ReactNode, useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import { Check, X } from 'lucide-react';
-import { useMainContext } from '../_contexts/MainContext';
+import React, { useState } from 'react';
+import { Popover, PopoverTrigger, PopoverContent } from '../../ui/popover';
 import { Board } from '@/lib/utils';
-import { set } from 'date-fns';
+import { useMainContext } from '../_contexts/MainContext';
+import { Check, X } from 'lucide-react';
 
-interface AddBoardProps {
-	children: ReactNode;
-	side?: 'left' | 'right' | 'top' | 'bottom';
+interface EditBoardProps {
+	board: Board;
 	open: boolean;
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	children: React.ReactNode;
 }
 
-type Background = 'snow' | 'ocean' | 'crystal' | 'rainbow' | 'peach' | 'flower' | 'earth' | 'alien';
-
-const AddBoard = ({ children, side, open, setOpen }: AddBoardProps) => {
-	const { boards, setBoards, currentMember } = useMainContext();
-
-	const [title, setTitle] = useState<string>('');
-	const [background, setBackground] = useState<Background>('snow');
+const EditBoard = ({ board, open, setOpen, children }: EditBoardProps) => {
+	const { boards, setBoards } = useMainContext();
+	const [title, setTitle] = useState<string>(board?.title || '');
+	const [background, setBackground] = useState<'snow' | 'ocean' | 'crystal' | 'rainbow' | 'peach' | 'flower' | 'earth' | 'alien'>(
+		board.background || 'alien'
+	);
 	const [error, setError] = useState<string>('');
 
-	const handleSubmit = () => {
+	const handleSave = () => {
 		if (!title.trim()) {
-			setError('Board title cannot be empty'); // Show error if title is empty
+			setError('Board title cannot be empty.');
 			return;
 		}
-		const newBoards: Board[] = [...boards, { id: Date.now().toString(), title, background, star: false, lists: [], members: [currentMember!] }];
-		setBoards(newBoards);
-		setTitle('');
-		setBackground('snow');
+
+		const updatedBoards = boards.map((b) => (b.id === board.id ? { ...b, title, background } : b));
+
+		if (!boards.find((b) => b.id === board.id)) {
+			updatedBoards.push({
+				...board,
+				title,
+				background,
+				id: Date.now().toString(),
+			});
+		}
+
+		setBoards(updatedBoards);
+		setOpen(false);
+	};
+
+	const handleDelete = () => {
+		const updatedBoards = boards.filter((b) => b.id !== board.id);
+		setBoards(updatedBoards);
 		setOpen(false);
 	};
 
 	return (
-		<Popover open={open}>
+		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
-			<PopoverContent side={side}>
+			<PopoverContent side='right'>
 				<div className='w-[304px] p-3 bg-trello-popover outline-none flex flex-col rounded'>
 					<div className='relative flex items-center justify-center'>
-						<h1 className='text-trello-text-p text-sm font-semibold'>Create board</h1>
+						<h1 className='text-trello-text-p text-sm font-semibold'>Edit board</h1>
 						<X
 							onClick={() => setOpen(false)}
 							className='absolute top-0 right-0 cursor-pointer text-trello-text-p hover:bg-trello-bg size-5 rounded'
@@ -223,12 +236,18 @@ const AddBoard = ({ children, side, open, setOpen }: AddBoardProps) => {
 						/>
 						{error && <p className='text-red-600 text-xs mt-1'>{error}</p>}
 					</div>
-					<div>
+					<div className='flex flex-col space-y-2'>
 						<button
-							onClick={handleSubmit}
+							onClick={handleSave}
 							className='w-full py-1.5 px-3 bg-trello-accent hover:bg-trello-focus duration-100 rounded mt-3 text-trello-popover font-semibold text-sm'
 						>
-							Create
+							Save
+						</button>
+						<button
+							onClick={handleDelete}
+							className='w-full py-1.5 px-3 bg-red-600 hover:bg-red-700 duration-100 rounded mt-3 font-semibold text-sm text-white'
+						>
+							Delete
 						</button>
 					</div>
 				</div>
@@ -237,4 +256,4 @@ const AddBoard = ({ children, side, open, setOpen }: AddBoardProps) => {
 	);
 };
 
-export default AddBoard;
+export default EditBoard;
