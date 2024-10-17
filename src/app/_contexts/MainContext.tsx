@@ -1,6 +1,6 @@
 import { exampleBoard, exampleMemberTim } from '@/lib/exampleInfo';
 import { Board, Member } from '@/lib/utils';
-import { createContext, FC, ReactNode, useContext, useState, useRef } from 'react';
+import { createContext, FC, ReactNode, useContext, useState } from 'react';
 
 interface MainContextProps {
 	currentMember: Member | undefined;

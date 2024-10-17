@@ -12,6 +12,13 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 	const { getBoardById } = useMainContext();
 
+	// Move the useState and useEffect hooks outside of the conditional
+	const [lists, setLists] = useState<ListType[]>(board?.lists || []);
+
+	useEffect(() => {
+		setBoard((prevBoard) => ({ ...prevBoard, lists }));
+	}, [lists, setBoard]);
+
 	if (!board || !getBoardById(board.id)) {
 		return (
 			<div className='flex justify-center bg-gradient-to-tl to-trello-backgrounds-snow-to from-trello-backgrounds-snow-from items-center h-full w-full'>
@@ -23,14 +30,6 @@ const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 			</div>
 		);
 	}
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const [lists, setLists] = useState<ListType[]>(board.lists || []);
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(() => {
-		setBoard((prevBoard) => ({ ...prevBoard, lists }));
-	}, [lists, setBoard]);
 
 	// Add a new list
 	const handleAddList = () => {
