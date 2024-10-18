@@ -1,4 +1,4 @@
-import { Ellipsis, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import { Card as CardType, List as ListType } from '../../lib/utils';
 import Card from './Card';
@@ -8,8 +8,6 @@ interface ListProps {
 	list: ListType;
 	setList: React.Dispatch<React.SetStateAction<ListType>>;
 }
-
-const test = 'test';
 
 const List: React.FC<ListProps> = ({ list, setList }) => {
 	const [cards, setCards] = useState(list.cards);

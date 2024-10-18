@@ -1,9 +1,8 @@
+import { Board } from '@/lib/utils';
+import { Check, X } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
-import { Check, X } from 'lucide-react';
 import { useMainContext } from '../_contexts/MainContext';
-import { Board } from '@/lib/utils';
-import { set } from 'date-fns';
 
 interface AddBoardProps {
 	children: ReactNode;

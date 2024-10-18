@@ -1,12 +1,12 @@
 'use client';
 
 import { exampleBoard } from '@/lib/exampleInfo';
-import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation'; // Updated import
+import { useEffect, useState } from 'react';
 import Board from '../../_components/Board';
 import Menu from '../../_components/Menu';
 import Sidebar from '../../_components/Sidebar';
-import { MainProvider, useMainContext } from '../../_contexts/MainContext';
-import { useParams } from 'next/navigation'; // Updated import
+import { useMainContext } from '../../_contexts/MainContext';
 
 const Page = () => {
 	const { boardId } = useParams<{ boardId: string }>(); // Use useParams to get boardId

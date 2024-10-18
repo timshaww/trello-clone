@@ -9,7 +9,7 @@ interface EditDueDateProps {
 	children: React.ReactNode;
 }
 
-const EditDueDate = ({ card, setCard, children }: EditDueDateProps) => {
+const EditDueDate = ({ children }: EditDueDateProps) => {
 	const [date, setDate] = React.useState<Date>();
 
 	return (

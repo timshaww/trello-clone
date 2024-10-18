@@ -1,5 +1,11 @@
-import Image from 'next/image';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home() {
-	return <div className='flex flex-row w-screen h-screen'></div>;
+	const router = useRouter();
+
+	useEffect(() => {
+		router.push('/b/board-1');
+	}, []);
+	return <div className='flex flex-row w-screen h-screen items-center justify-center'></div>;
 }

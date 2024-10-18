@@ -8,7 +8,7 @@ interface AddChecklistProps {
 	setCard: React.Dispatch<React.SetStateAction<Card>>;
 }
 
-const AddChecklist = ({ children, card, setCard }: AddChecklistProps) => {
+const AddChecklist = ({ children }: AddChecklistProps) => {
 	const [title, setTitle] = React.useState<string>('');
 
 	return (

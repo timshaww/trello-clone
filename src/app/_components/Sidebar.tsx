@@ -20,7 +20,7 @@ const Sidebar = () => {
 								T
 							</div>
 							<div className='flex flex-col text-trello-text-p ml-2 mr-1'>
-								<h1 className='font-semibold text-sm'>Tim's Workspace</h1>
+								<h1 className='font-semibold text-sm'>Tim&apos;s Workspace</h1>
 								<p className='text-xs'>Free</p>
 							</div>
 						</div>

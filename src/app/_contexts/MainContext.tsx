@@ -1,6 +1,6 @@
 import { exampleBoard, exampleMemberTim } from '@/lib/exampleInfo';
 import { Board, Member } from '@/lib/utils';
-import { createContext, FC, ReactNode, useContext, useState, useEffect, useRef } from 'react';
+import { createContext, FC, ReactNode, useContext, useState } from 'react';
 
 interface MainContextProps {
 	currentMember: Member | undefined;
@@ -33,8 +33,8 @@ export const MainProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const getBoardById = (boardId: string) => boards.find((board) => board.id === boardId);
 
 	// Store previous values in useRef to avoid unnecessary updates
-	const previousMember = useRef(currentMember);
-	const previousBoards = useRef(boards);
+	// const previousMember = useRef(currentMember);
+	// const previousBoards = useRef(boards);
 
 	// Save currentMember to localStorage when it changes, only if it's different from the previous value
 	// useEffect(() => {
