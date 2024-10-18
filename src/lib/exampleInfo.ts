@@ -1,6 +1,5 @@
 import { Board, Member } from "./utils";
 
-
 export const exampleMemberAlice: Member = {
     id: 'member-1',
     firstName: 'Alice',
@@ -236,74 +235,3 @@ export const exampleBoard: Board = {
         }
     ]
 };
-
-/*
-export type Board = {
-    id: UniqueIdentifier
-    title: string
-    listsIds: UniqueIdentifier[]
-    membersIds: UniqueIdentifier[]
-    star: boolean
-    background: 'snow' | 'ocean' | 'crystal' | 'rainbow' | 'peach' | 'flower' | 'earth' | 'alien'
-}
-
-export type List = {
-    id: UniqueIdentifier
-    title: string
-    cardsIds: UniqueIdentifier[]
-}
-
-export type Card = {
-    id: UniqueIdentifier
-    listId: UniqueIdentifier
-    title: string
-    description: string
-    labelsIds: UniqueIdentifier[]
-    checklist: Checklist | null
-    dueDate: Date
-    membersIds: UniqueIdentifier[]
-    watchersIds: UniqueIdentifier[]
-    activitiesIds: UniqueIdentifier[]
-}
-
-export type Checklist = {
-    id: UniqueIdentifier
-    title: string
-    checklistItemsIds: UniqueIdentifier[]
-}
-
-export type Member = {
-    id: UniqueIdentifier
-    firstName: string
-    lastName: string
-    color: 'green' | 'yellow' | 'orange' | 'red' | 'purple' | 'blue' | 'sky' | 'lime' | 'pink' | 'black'
-}
-
-export type Label = {
-    id: UniqueIdentifier
-    title?: string
-    color: 'green' | 'yellow' | 'orange' | 'red' | 'purple' | 'blue' | 'sky' | 'lime' | 'pink' | 'black'
-}
-
-export type ChecklistItem = {
-    id: UniqueIdentifier
-    title: string
-    completed: boolean
-    membersIds: UniqueIdentifier[]
-    dueDate: Date
-}
-
-export type Activity = {
-    id: UniqueIdentifier
-    title: string
-    member: Member
-    date: Date
-    reactionsIds: UniqueIdentifier[]
-}
-
-export type Reaction = {
-    id: UniqueIdentifier
-    emoji: string
-    member: Member
-}
-    */

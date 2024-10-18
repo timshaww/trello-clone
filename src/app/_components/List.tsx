@@ -53,10 +53,9 @@ const List: React.FC<ListProps> = ({ list, setList }) => {
 		<div className='flex flex-col bg-trello-list-bg p-2 gap-2 rounded-xl h-fit w-[272px] min-w-[272px]'>
 			<div className='flex flex-row justify-between h-8 items-center'>
 				<h2 className='mx-2 text-trello-list-text font-semibold overflow-hidden'>{list.title}</h2>
-				<div className='size-8 hover:bg-trello-hover flex items-center justify-center rounded cursor-pointer'>
+				{/* <div className='size-8 hover:bg-trello-hover flex items-center justify-center rounded cursor-pointer'>
 					<Ellipsis className='text-trello-list-text size-4' />
-					{/* TODO: Add menu */}
-				</div>
+				</div> */}
 			</div>
 
 			<div className='flex flex-col gap-2'>

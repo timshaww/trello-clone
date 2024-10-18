@@ -63,7 +63,7 @@ const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 
 				{/* Button to add a new list */}
 				<div
-					className='flex items-center justify-center bg-trello-card-bg p-3 rounded-md cursor-pointer min-w-[200px] hover:bg-trello-hover'
+					className='h-10 flex items-center justify-center bg-[#a6c5e229] p-3 rounded-md cursor-pointer min-w-[200px] hover:bg-trello-idk'
 					onClick={handleAddList}
 				>
 					<p className='text-trello-text-p'>+ Add List</p>
