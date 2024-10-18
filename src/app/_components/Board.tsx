@@ -12,6 +12,12 @@ type BoardProps = {
 const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 	const { getBoardById } = useMainContext();
 
+	const [lists, setLists] = useState<ListType[]>(board.lists || []);
+
+	useEffect(() => {
+		setBoard((prevBoard) => ({ ...prevBoard, lists }));
+	}, [lists]);
+
 	if (!board || !getBoardById(board.id)) {
 		return (
 			<div className='flex justify-center bg-gradient-to-tl to-trello-backgrounds-snow-to from-trello-backgrounds-snow-from items-center h-full w-full'>
@@ -23,12 +29,6 @@ const Board: React.FC<BoardProps> = ({ board, setBoard }) => {
 			</div>
 		);
 	}
-
-	const [lists, setLists] = useState<ListType[]>(board.lists || []);
-
-	useEffect(() => {
-		setBoard((prevBoard) => ({ ...prevBoard, lists }));
-	}, [lists]);
 
 	// Add a new list
 	const handleAddList = () => {
